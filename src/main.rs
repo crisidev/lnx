@@ -3,6 +3,8 @@ use std::env::args;
 use std::io::{self, BufRead, Write};
 use std::process;
 
+const VERSION: &'static str = env!("CARGO_PKG_VERSION");
+
 #[derive(Debug, PartialEq)]
 struct LineExecError {
     message: String,
@@ -50,6 +52,10 @@ impl LineExec {
 
     fn fetch_cmdline_args() -> ResultOrError<Vec<String>> {
         let args: Vec<String> = args().collect();
+        if args.len() == 2 && args[1] == "--version" {
+            println!("{} v{}", &args[0], VERSION);
+            process::exit(0);
+        }
         if args.len() != 3 {
             eprintln!("Usage: {} <variable-name> <command-to-execute>", &args[0]);
             eprintln!("Example: ls | {} v 'echo $v'", &args[0]);
