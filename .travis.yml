@@ -1,0 +1,57 @@
+dist: trusty
+language: rust
+services: docker
+sudo: required
+rust:
+- nightly
+env:
+  global:
+  - CRATE_NAME=lnx
+matrix:
+  include:
+  - env: TARGET=x86_64-unknown-linux-gnu
+  - env: TARGET=x86_64-unknown-linux-musl
+  - env: TARGET=aarch64-unknown-linux-gnu DISABLE_TESTS=1
+  - env: TARGET=aarch64-unknown-linux-musl DISABLE_TESTS=1
+  - env: TARGET=arm-unknown-linux-gnueabi DISABLE_TESTS=1
+  - env: TARGET=armv7-unknown-linux-gnueabihf DISABLE_TESTS=1
+  - env: TARGET=x86_64-apple-darwin
+    os: osx
+  - env: TARGET=x86_64-pc-windows-gnu DISABLE_TESTS=1
+before_install:
+- set -e
+- rustup self update
+install:
+- sh ci/install.sh
+- source ~/.cargo/env || true
+script:
+- bash ci/script.sh
+after_script: set +e
+before_deploy:
+- sh ci/before_deploy.sh
+deploy:
+  provider: releases
+  api_key:
+    secure: F1f7NvhcLSbdJWmO/3t7TKjoElh/tI9mw+uTdr24e9Rc4mrV8qNQYxCH6/Fyeq7RnHbsuW6Xki9iQk6ubA6ojBk/A5ls+lf6g4RgEcV0W9HAot7aXOhhW7AmBRUXl6170mhLuNevuWMgHdfO3gy2XNPbeLyMOIGLqqy0mbflHpBm1KFOPbDHF3BrUuOkM0Ls8eBYpVRQLFd7kIBD2t5hXwp1P1MpIh+R09Wjc1RE/8o1RXaxLvM23nscz4Tb0dwJfxSANGSaCv8d5fKAkkAp4DlaoI9toY4YTP0BicYAQuKdM3IARmuyQhCPeXAgzoTdFrpYb+29S6JVTWfYrv/e6e+2twNtclV7gfgFXVou/vtgpbB3dXPFUIONf9kIsV4riBTJzKJKt7meAMQe2hThY1+fO9SAQRi+m/cNuY4v40O4Zgdd7dZWpVq57+pGaTnPj24zSpH6L6pXQzD3s9o25gLEhhUW3CH+AoNQjskkCwQKUB+ttV6C+trN5J5YZuGYK1Ks05zo+qDTyuP2VG5zyGPU5xAQcq7r4UwQRWPCdyC0Y1rnpzZ8eI+Nd1ZPCUsEFgTyi9zXNH2Vie1h3h6MdPt2m/Qs2disZqv8/HY3+a2esonkMencV++zi6wD3MUBQVIYGoQ7L1jV+RFPkeN8HN9DBtNYCMqaqqL+ReqY9U4=
+  file_glob: true
+  file: $CRATE_NAME-$TRAVIS_TAG-$TARGET.*
+  on:
+    repo: crisidev/lnx
+    tags: true
+  skip_cleanup: 'true'
+cache: cargo
+before_cache:
+- chmod -R a+r $HOME/.cargo
+branches:
+  only:
+  - "/^v\\d+\\.\\d+\\.\\d+.*$/"
+  - master
+notifications:
+  email:
+    on_success: never
+  irc:
+    channels:
+    - chat.freenode.net#crisidev
+    on_success: always
+    on_failure: always
+    use_notice: true
