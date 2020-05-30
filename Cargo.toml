@@ -1,6 +1,6 @@
 [package]
 name = "lnx"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Matteo Bigoi <bigo@crisidev.org>"]
 edition = "2018"
 description = "Utility to map lines from stdin onto command arguments to be executed"
@@ -10,7 +10,7 @@ homepage = "https://github.com/crisidev/lnx"
 repository = "https://github.com/crisidev/lnx"
 license = "MIT"
 keywords = ["command-line", "terminal", "awk", "xargs", "map"]
-categories = ["command-line-utilities", "tools"]
+categories = ["command-line-utilities", "development-tools"]
 
 [profile.release]
 opt-level = 'z'
