@@ -50,7 +50,7 @@ Alternatively you can install the latest tag directly from [crates.io](https://c
 LineExec build on both stable and nighly rust.
 
 ### Platforms support
-QrSync has been tested on Linux and MacOSX. It builds also for Windows, but has not been tested 
+LineExec has been tested on Linux and MacOSX. It builds also for Windows, but has not been tested 
 
 ### License
 See [LICENSE](https://github.com/crisidev/lnx/blob/master/LICENSE) file.
