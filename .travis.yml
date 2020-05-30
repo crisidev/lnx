@@ -3,7 +3,7 @@ language: rust
 services: docker
 sudo: required
 rust:
-- nightly
+- stable
 env:
   global:
   - CRATE_NAME=lnx
