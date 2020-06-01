@@ -1,4 +1,4 @@
-## QrSync
+## LineExec
 [![Travis](https://img.shields.io/travis/crisidev/lnx?style=for-the-badge)](https://travis-ci.org/github/crisidev/lnx)
 [![Crates.io](https://img.shields.io/crates/v/lnx?style=for-the-badge)](https://crates.io/crates/lnx)
 [![Docs.rs](https://img.shields.io/badge/docs.rs-rustdoc-green?style=for-the-badge)](https://docs.rs/crate/lnx)
