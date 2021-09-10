@@ -1,5 +1,6 @@
 ## LineExec
-[![Travis](https://img.shields.io/travis/crisidev/lnx?style=for-the-badge)](https://travis-ci.org/github/crisidev/lnx)
+[![Release](https://img.shields.io/github/workflow/status/crisidev/lnx/release?style=for-the-badge)](https://github.com/crisidev/lnx/actions?query=workflow%3Arelease)
+[![Ci](https://img.shields.io/github/workflow/status/crisidev/lnx/ci?style=for-the-badge)](https://github.com/crisidev/lnx/actions?query=workflow%3Aci)
 [![Crates.io](https://img.shields.io/crates/v/lnx?style=for-the-badge)](https://crates.io/crates/lnx)
 [![Docs.rs](https://img.shields.io/badge/docs.rs-rustdoc-green?style=for-the-badge)](https://docs.rs/crate/lnx)
 [![Crates.io](https://img.shields.io/crates/d/lnx?style=for-the-badge)](https://crates.io/crates/lnx)
@@ -33,12 +34,8 @@ target/
 ### Install
 Travis-CI releases [binaries](https://github.com/crisidev/lnx/releases) for various architectures when a new tag is pushed:
 * x84-64 Linux GNU
-* x86-64 Linux Musl
 * x86-64 Darwin
-* x86-64 Windows
 * aarch64 Linux GNU
-* aarch64 Linux Musl
-* arm Linux GNU
 * armv7 Linux GNU
 
 Alternatively you can install the latest tag directly from [crates.io](https://crates.io/crates/lnx):
