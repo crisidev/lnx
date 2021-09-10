@@ -1,6 +1,6 @@
 [package]
 name = "lnx"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Matteo Bigoi <bigo@crisidev.org>"]
 edition = "2018"
 description = "Utility to map lines from stdin onto command arguments to be executed"
