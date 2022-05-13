@@ -1,8 +1,8 @@
 [package]
 name = "lnx"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["Matteo Bigoi <bigo@crisidev.org>"]
-edition = "2018"
+edition = "2021"
 description = "Utility to map lines from stdin onto command arguments to be executed"
 documentation = "https://docs.rs/lnx"
 readme = "README.md"
@@ -13,6 +13,7 @@ keywords = ["command-line", "terminal", "awk", "xargs", "map"]
 categories = ["command-line-utilities", "development-tools"]
 
 [profile.release]
+strip = true
 opt-level = 'z'
 lto = true
 codegen-units = 1
