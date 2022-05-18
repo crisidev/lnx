@@ -74,8 +74,13 @@ impl LineExec {
 
     /// Shellout a command using POSIX `sh` as base shell.
     fn command(&self, buf: String) -> Result<std::process::Output> {
-        let command = self.command.replace(&format!("${}", self.variable), buf.trim());
-        Ok(std::process::Command::new("sh").arg("-c").arg(command).output()?)
+        let command = self
+            .command
+            .replace(&format!("${}", self.variable), buf.trim());
+        Ok(std::process::Command::new("sh")
+            .arg("-c")
+            .arg(command)
+            .output()?)
     }
 
     /// Execute the command pipeline.
